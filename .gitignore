@@ -1,3 +1,10 @@
+build/
+release/
+.vscode
+bench.csv
+results*
+__pychache__/
+
 # Prerequisites
 *.d
 
