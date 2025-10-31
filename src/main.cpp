@@ -18,10 +18,12 @@ int execute_crc() {
     auto result = dml::execute<path>(dml::crc, dml::make_view(src), crc_seed);
 
     // Check result
-    if (result.status == dml::status_code::ok) {
+    if (result.status == dml::status_code::ok) 
+    {
         std::cout << "Finished successfully. Calculated CRC is: 0x" << std::hex << result.crc_value << std::dec << std::endl;
     }
-    else {
+    else 
+    {
         std::cout << "Failure occurred." << std::endl;
         return -1;
     }
@@ -31,26 +33,31 @@ int execute_crc() {
 
 int main(int argc, char **argv)
 {
-    if (argc < 2) {
+    if (argc < 2)
+    {
         std::cout << "Missing the execution path as the first parameter."
                   <<  "Use hardware_path, software_path or automatic_path." << std::endl;
         return 1;
     }
 
     std::string path = argv[1];
-    if (path == "hardware_path") {
+    if (path == "hardware_path")
+    {
         std::cout << "Executing using dml::hardware path" << std::endl;
         return execute_crc<dml::hardware>();
     }
-    else if (path == "software_path") {
+    else if (path == "software_path")
+    {
         std::cout << "Executing using dml::software path" << std::endl;
         return execute_crc<dml::software>();
     }
-    else if (path == "auto_path") {
+    else if (path == "auto_path")
+    {
         std::cout << "Executing using dml::automatic path" << std::endl;
         return execute_crc<dml::automatic>();
     }
-    else {
+    else
+    {
         std::cout << "Unrecognized value for parameter."
                   << "Use hardware_path, software_path or automatic_path." << std::endl;
         return 1;
